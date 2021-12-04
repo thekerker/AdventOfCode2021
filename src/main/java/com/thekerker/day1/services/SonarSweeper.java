@@ -22,4 +22,22 @@ public class SonarSweeper {
 
         return count;
     }
+
+    public int getSlidingWindowIncreases(List<Integer> measurements) {
+        int count = 0;
+
+        int currentSum = measurements.get(0) + measurements.get(1) + measurements.get(2);
+
+        for (int i = 1; i < measurements.size(); i++) {
+            if (i + 2 < measurements.size()) {
+                int newSum = measurements.get(i) + measurements.get(i + 1) + measurements.get(i + 2);
+                if (newSum > currentSum) {
+                    count++;
+                }
+                currentSum = newSum;
+            }
+        }
+
+        return count;
+    }
 }
