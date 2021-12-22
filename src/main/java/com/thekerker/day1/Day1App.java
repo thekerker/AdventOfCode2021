@@ -1,18 +1,16 @@
 package com.thekerker.day1;
 
 import com.thekerker.day1.services.SonarSweeper;
-import com.thekerker.day1.utils.FileReader;
-import lombok.extern.slf4j.Slf4j;
+import com.thekerker.utils.FileReader;
 
 import java.util.List;
 
-@Slf4j
-public class App {
+public class Day1App {
 
     public static void main(String[] args) {
         SonarSweeper sonarSweeper = new SonarSweeper();
 
-        List<Integer> measurements = FileReader.readInputFile();
+        List<Integer> measurements = FileReader.readDay1InputFile();
 
         int depthIncreases = sonarSweeper.getDepthIncreases(measurements);
 
