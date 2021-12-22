@@ -1,6 +1,7 @@
 package com.thekerker.day3.services;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.MutablePair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,17 +42,9 @@ public class PowerConsumptionChecker {
 
     private String getOxygenGeneratorRating(List<String> readings, int column) {
         if (readings.size() > 1) {
-            List<String> zeros = new ArrayList<>();
-            List<String> ones = new ArrayList<>();
-
-            for (String reading : readings) {
-                String bit = String.valueOf(reading.charAt(column));
-                if (StringUtils.equals("0", bit)) {
-                    zeros.add(reading);
-                } else {
-                    ones.add(reading);
-                }
-            }
+            MutablePair<List<String>, List<String>> zerosAndOnes = getZerosAndOnes(readings, column);
+            List<String> zeros = zerosAndOnes.left;
+            List<String> ones = zerosAndOnes.right;
 
             if (ones.size() >= zeros.size()) {
                 return getOxygenGeneratorRating(ones, ++column);
@@ -65,17 +58,9 @@ public class PowerConsumptionChecker {
 
     private String getCO2ScrubberRating(List<String> readings, int column) {
         if (readings.size() > 1) {
-            List<String> zeros = new ArrayList<>();
-            List<String> ones = new ArrayList<>();
-
-            for (String reading : readings) {
-                String bit = String.valueOf(reading.charAt(column));
-                if (StringUtils.equals("0", bit)) {
-                    zeros.add(reading);
-                } else {
-                    ones.add(reading);
-                }
-            }
+            MutablePair<List<String>, List<String>> zerosAndOnes = getZerosAndOnes(readings, column);
+            List<String> zeros = zerosAndOnes.left;
+            List<String> ones = zerosAndOnes.right;
 
             if (zeros.size() <= ones.size()) {
                 return getCO2ScrubberRating(zeros, ++column);
@@ -85,5 +70,21 @@ public class PowerConsumptionChecker {
         }
 
         return readings.get(0);
+    }
+
+    private MutablePair<List<String>, List<String>> getZerosAndOnes(List<String> readings, int column) {
+        List<String> zeros = new ArrayList<>();
+        List<String> ones = new ArrayList<>();
+
+        for (String reading : readings) {
+            String bit = String.valueOf(reading.charAt(column));
+            if (StringUtils.equals("0", bit)) {
+                zeros.add(reading);
+            } else {
+                ones.add(reading);
+            }
+        }
+
+        return new MutablePair<>(zeros, ones);
     }
 }
