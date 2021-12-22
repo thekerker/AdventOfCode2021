@@ -22,4 +22,11 @@ public class FileReaderTest {
 
         assertEquals(1000, contents.size());
     }
+
+    @Test
+    public void shouldReadDay3InputFile() {
+        List<String> contents = FileReader.readDay3InputFile();
+
+        assertEquals(1000, contents.size());
+    }
 }

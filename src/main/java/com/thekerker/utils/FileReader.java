@@ -43,4 +43,19 @@ public class FileReader {
 
         return positions;
     }
+
+    public static List<String> readDay3InputFile() {
+        List<String> readings = new ArrayList<>();
+
+        Path path = Paths.get("src/main/resources/day3input.txt");
+        try (Scanner scanner = new Scanner(path, StandardCharsets.UTF_8.name())) {
+            while (scanner.hasNextLine()) {
+                readings.add(scanner.nextLine());
+            }
+        } catch (IOException e) {
+            log.error("Unable to open file", e.getMessage());
+        }
+
+        return readings;
+    }
 }
