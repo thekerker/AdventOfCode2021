@@ -1,5 +1,6 @@
 package com.thekerker.day2.services;
 
+import com.thekerker.day2.models.AllowedPositions;
 import com.thekerker.day2.models.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,12 +20,12 @@ public class DepthCheckerTest {
         depthChecker = new DepthChecker();
 
         positions = new ArrayList<>();
-        positions.add(new Position("forward", 5));
-        positions.add(new Position("down",  5));
-        positions.add(new Position("forward",  8));
-        positions.add(new Position("up",  3));
-        positions.add(new Position("down",  8));
-        positions.add(new Position("forward",  2));
+        positions.add(new Position(AllowedPositions.FORWARD, 5));
+        positions.add(new Position(AllowedPositions.DOWN, 5));
+        positions.add(new Position(AllowedPositions.FORWARD, 8));
+        positions.add(new Position(AllowedPositions.UP, 3));
+        positions.add(new Position(AllowedPositions.DOWN, 8));
+        positions.add(new Position(AllowedPositions.FORWARD, 2));
     }
 
     @Test

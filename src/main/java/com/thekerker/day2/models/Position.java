@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Position {
-    private String position;
+    private AllowedPositions position;
 
     private int depth;
 }

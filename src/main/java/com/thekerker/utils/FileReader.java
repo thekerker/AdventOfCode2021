@@ -1,5 +1,6 @@
 package com.thekerker.utils;
 
+import com.thekerker.day2.models.AllowedPositions;
 import com.thekerker.day2.models.Position;
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,7 +36,7 @@ public class FileReader {
         try (Scanner scanner = new Scanner(path, StandardCharsets.UTF_8.name())) {
             while (scanner.hasNextLine()) {
                 String[] line = scanner.nextLine().split(" ");
-                positions.add(new Position(line[0], Integer.parseInt(line[1])));
+                positions.add(new Position(AllowedPositions.valueOf(line[0].toUpperCase()), Integer.parseInt(line[1])));
             }
         } catch (IOException e) {
             log.error("Unable to open file", e.getMessage());

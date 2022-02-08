@@ -14,13 +14,13 @@ public class DepthChecker {
         for (Position position : positions) {
             int currentDepth = position.getDepth();
             switch (position.getPosition()) {
-                case "forward":
+                case FORWARD:
                     horizontalPosition += currentDepth;
                     break;
-                case "down":
+                case DOWN:
                     depth += currentDepth;
                     break;
-                case "up":
+                case UP:
                     depth -= currentDepth;
                     break;
                 default:
@@ -40,14 +40,14 @@ public class DepthChecker {
         for (Position position : positions) {
             int currentDepth = position.getDepth();
             switch (position.getPosition()) {
-                case "forward":
+                case FORWARD:
                     horizontalPosition += currentDepth;
                     depth += aim * currentDepth;
                     break;
-                case "down":
+                case DOWN:
                     aim += currentDepth;
                     break;
-                case "up":
+                case UP:
                     aim -= currentDepth;
                     break;
                 default:
